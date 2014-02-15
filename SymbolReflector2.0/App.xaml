@@ -1,0 +1,14 @@
+﻿<Application x:Class="SymbolReflector.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="clr-namespace:SymbolReflector.Core.UI"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources> 
+    	<SolidColorBrush x:Key="ButtonBackground" Color="#FF008102"/>
+    	<Color x:Key="WindowColorGreen">#FF55D628</Color>
+    	<Color x:Key="WindowColorYellow">#FFDAFF00</Color>
+    	<Color x:Key="ButtonPressedBackground">#FF005E01</Color>
+        <ui:LeftConverter x:Key="leftConverter"/>
+        <ui:TopConverter x:Key="topConverter"/>
+    </Application.Resources>
+</Application>
