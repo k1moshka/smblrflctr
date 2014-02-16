@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Mproject.System.Messaging.Emulators;
 using Mproject.System.Messaging;
 using System.Threading;
 
 namespace SymbolReflector.Core
 {
+    /// <summary>
+    /// Класс предоставляющий функционал для замены строк одной раскладки на строки другой раскладки клавиатуры
+    /// </summary>
     public class StringChanger
     {
         private Emulator emul = Emulator.Instance;
+
+        #region keyboard actions
         private KeyboardAction ctrl_d;
         private KeyboardAction v_d;
         private KeyboardAction x_d;
@@ -19,9 +21,14 @@ namespace SymbolReflector.Core
         private KeyboardAction x_u;
         private KeyboardAction shift_d;
         private KeyboardAction shift_u;
+        #endregion
 
+        /// <summary>
+        /// Создает новый экземпляр класса
+        /// </summary>
         public StringChanger()
         {
+            // init key actions
             ctrl_d = new KeyboardAction()
             {
                 Msg = 0x0100,
@@ -67,9 +74,13 @@ namespace SymbolReflector.Core
 
         private void changeLang()
         {
+            // смена раскладки клавиатуры
             emul.Emulate(new ChangeLanguageAction());
         }
 
+        /// <summary>
+        /// Вырезание данных в буфер обмена из активного окна системы. (Эмуляция нажатия Ctrl+X)
+        /// </summary>
         public void Cut()
         {
             // d - down, u - up
@@ -79,6 +90,9 @@ namespace SymbolReflector.Core
             emul.EmulateKey(x_u);
         }
 
+        /// <summary>
+        /// Вставка данных из буфера обмена. (Эмуляция нажатия Ctrl+V)
+        /// </summary>
         public void Paste()
         {
             // d - down, u - up
@@ -88,6 +102,10 @@ namespace SymbolReflector.Core
             emul.EmulateKey(v_u);
         }
 
+        /// <summary>
+        /// Процесс замены строки одной раскладки на другую. (Эмуляция нажатия клавиш.)
+        /// </summary>
+        /// <param name="changingString">Изменяемая строка</param>
         public void Process(string changingString)
         {
             changeLang();

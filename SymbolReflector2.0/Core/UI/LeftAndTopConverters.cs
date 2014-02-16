@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
-using System.Drawing;
 
 namespace SymbolReflector.Core.UI
 {
+    /// <summary>
+    /// WPF-конвертер положения левого края окна, так что бы окно находилось максимально справа
+    /// </summary>
     public class LeftConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -23,6 +22,9 @@ namespace SymbolReflector.Core.UI
         }
     }
 
+    /// <summary>
+    /// WPF-конвертер положения верхнего края окна, так что бы окно находилось максимально внизу
+    /// </summary>
     public class TopConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

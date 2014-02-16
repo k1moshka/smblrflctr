@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Mproject.System.Messaging.Emulators
 {
+    /// <summary>
+    /// Реализация класса предоставляющего информацию о событии клавиши
+    /// </summary>
     public class KeyboardAction: IAction
     {
         #region virtual_codes
@@ -61,8 +61,6 @@ namespace Mproject.System.Messaging.Emulators
 
         private readonly IntPtr KEY_SHIFT = new IntPtr(0x10);
         #endregion
-
-        
 
         public int Msg
         {

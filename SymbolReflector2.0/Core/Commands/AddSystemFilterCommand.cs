@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Windows.Input;
 using Mproject.System.Messaging;
 
 namespace SymbolReflector.Core.Commands
 {
+    /// <summary>
+    /// Команда добавления в систему фильтра
+    /// </summary>
     public class AddSystemFilterCommand: UpdatableCommand
     {
         public event EventHandler CanExecuteChanged;

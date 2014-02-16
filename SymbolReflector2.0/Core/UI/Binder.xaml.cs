@@ -8,10 +8,13 @@ using Settings = SymbolReflector.Properties.Settings;
 namespace SymbolReflector.Core.UI
 {
     /// <summary>
-    /// Interaction logic for Binder.xaml
+    /// UI оболочка класса Bind
     /// </summary>
     public partial class Binder : UserControl
     {
+        /// <summary>
+        /// Текущий байнд для контрола
+        /// </summary>
         public Bind Bind
         {
             get { return (Bind)GetValue(BindProperty); }
@@ -35,6 +38,7 @@ namespace SymbolReflector.Core.UI
             updateBind();
         }
 
+        #region детект установки нового байнда
         private void Text_bind_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (!e.IsRepeat && !key1down)
@@ -68,9 +72,11 @@ namespace SymbolReflector.Core.UI
             }
             e.Handled = true;
         }
+        #endregion
 
         private void updateBind()
         {
+            // загрузка байнда из настроек приложения
             this.Bind = new Bind()
             {
                 Bind1 = KeyInterop.KeyFromVirtualKey(Settings.Default.BindKey1),

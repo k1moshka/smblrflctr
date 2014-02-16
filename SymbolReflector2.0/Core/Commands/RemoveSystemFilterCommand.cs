@@ -4,6 +4,9 @@ using Mproject.System.Messaging;
 
 namespace SymbolReflector.Core.Commands
 {
+    /// <summary>
+    /// Команда удаляющая фильтр из системы
+    /// </summary>
     public class RemoveSystemFilterCommand: UpdatableCommand
     {
         public event EventHandler CanExecuteChanged;

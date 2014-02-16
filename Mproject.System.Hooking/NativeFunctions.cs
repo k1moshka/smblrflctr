@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace Mproject.System.Messaging
@@ -46,19 +43,44 @@ namespace Mproject.System.Messaging
         /// <returns></returns>
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
-
+        /// <summary>
+        /// Эмуляция нажатия или отжатия клавиши
+        /// </summary>
+        /// <param name="bVk">Код клавиши</param>
+        /// <param name="bScan">Дополнительная информация</param>
+        /// <param name="dwFlags">0 - down, 0x0002 - up</param>
+        /// <param name="dwExtraINfo">Дополнительная информация</param>
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, ushort dwFlags, IntPtr dwExtraINfo);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="HKL"></param>
+        /// <param name="uFlags"></param>
+        /// <returns></returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern IntPtr ActivateKeyboardLayout(IntPtr HKL, int uFlags);
-
+        /// <summary>
+        /// Получения описателя активного окна системы
+        /// </summary>
+        /// <returns>HWND (Window Handler)</returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern IntPtr GetForegroundWindow();
-
+        /// <summary>
+        /// Отправляет сообщение окну в WinAPI формате
+        /// </summary>
+        /// <param name="hWnd">Описатель окна</param>
+        /// <param name="Msg">Сообщение</param>
+        /// <param name="wParam">Дополнительная информация</param>
+        /// <param name="lParam">Дополнительная информация</param>
+        /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
-
+        /// <summary>
+        /// Возвращает состояние клавиши
+        /// </summary>
+        /// <param name="vkey">Код клавиши(WinAPI)</param>
+        /// <returns></returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern short GetAsyncKeyState(int vkey);
     }

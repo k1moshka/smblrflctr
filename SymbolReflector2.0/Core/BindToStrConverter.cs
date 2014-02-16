@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Data;
 using SymbolReflector.Core.UI;
-using System.Windows.Input;
 
 namespace SymbolReflector.Core
 {
+    /// <summary>
+    /// WPF конвертер Bind в строкове представление
+    /// </summary>
     public class BindToStrConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var bind = value as Bind;
-            if (bind != null)
+            if (bind != null && bind.IsValid)
             {
-
                 var result = (bind.Bind1).ToString() + "+";
                 result += (bind.Bind2).ToString();
 

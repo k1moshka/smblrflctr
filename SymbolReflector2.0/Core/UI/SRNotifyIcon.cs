@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Windows;
 using Mproject.System.Messaging;
-using Mproject.System.Messaging.Filters;
 
 namespace SymbolReflector.Core.UI
 {
+    /// <summary>
+    /// Класс управляющий состоянием иконки в трэе
+    /// </summary>
     public class SRNotifyIcon
     {
         private bool isHided;
         private NotifyIcon _notify;
         private Window _mainWindow;
 
+        /// <summary>
+        /// Инциализирует новый экземпляр класса.
+        /// </summary>
+        /// <param name="mainWindow">Окно отображенем которого управляет данный экземпляр</param>
         public SRNotifyIcon(Window mainWindow)
         {
             _notify = new NotifyIcon();
@@ -73,6 +75,7 @@ namespace SymbolReflector.Core.UI
             _notify.ContextMenu = menu;
         }
 
+        #region toggle-функция показа/сокрытия окна
         private void showHideWindow()
         {
             if (isHided)
@@ -93,5 +96,6 @@ namespace SymbolReflector.Core.UI
             _mainWindow.Activate();
             isHided = false;
         }
+        #endregion
     }
 }

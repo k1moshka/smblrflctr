@@ -46,5 +46,17 @@ namespace SymbolReflector.Properties {
                 this["BindKey2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsStartWithOS {
+            get {
+                return ((bool)(this["IsStartWithOS"]));
+            }
+            set {
+                this["IsStartWithOS"] = value;
+            }
+        }
     }
 }

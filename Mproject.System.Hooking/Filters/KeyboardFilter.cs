@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace Mproject.System.Messaging.Filters
 {
+    /// <summary>
+    /// Класс описывающий Keyboard hook
+    /// </summary>
     public class KeyboardFilter: ISystemFilter
     {
         private HookCallback hookCallback;
@@ -100,7 +101,6 @@ namespace Mproject.System.Messaging.Filters
         /// </summary>
         private IntPtr _hookCallBack(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            // TODO: уменьшить сложность метода
             if (nCode >= 0)
             {
                 var symbol = Marshal.ReadInt32(lParam);
@@ -119,7 +119,6 @@ namespace Mproject.System.Messaging.Filters
 
                 if (KEYBOARD_EXCEPTION.Contains(symbol))
                     return new IntPtr(1);
-                    //return NativeFunctions.CallNextHookEx(IdHook, 0x00, IntPtr.Zero, IntPtr.Zero); //IntPtr.Zero;
             }
             return NativeFunctions.CallNextHookEx(IdHook, nCode, wParam, lParam);
         }

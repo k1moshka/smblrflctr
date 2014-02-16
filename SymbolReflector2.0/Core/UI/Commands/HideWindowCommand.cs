@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace SymbolReflector.Core.UI.Commands
 {
+    /// <summary>
+    /// Команда сокрытия окна
+    /// </summary>
     public class HideWindowCommand: ICommand
     {
         public bool CanExecute(object parameter)

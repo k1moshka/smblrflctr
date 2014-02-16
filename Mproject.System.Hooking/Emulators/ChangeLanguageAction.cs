@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Mproject.System.Messaging.Emulators
 {
+    /// <summary>
+    /// Событие смены ракладки клавиатуры для активного окна
+    /// </summary>
     public class ChangeLanguageAction: IAction
     {
         public int Msg

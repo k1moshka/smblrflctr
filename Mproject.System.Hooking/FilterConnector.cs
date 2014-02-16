@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Mproject.System.Messaging.Filters;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 namespace Mproject.System.Messaging
 {
+    /// <summary>
+    /// Класс подключающий и удаляющий системные фильтры(хуки)
+    /// </summary>
     public class FilterConnector // singleton
     {
         #region singleton

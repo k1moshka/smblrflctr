@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Mproject.System.Messaging
 {
+    /// <summary>
+    /// Виртуальный код клавиши. Предоставляемый WinAPI
+    /// </summary>
     public class VirtualCode
     {
         public static readonly IntPtr KEY_CTRL = new IntPtr(0x11);
