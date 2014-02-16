@@ -29,7 +29,7 @@ namespace SymbolReflector
         /// <summary>
         /// Показывает запускаеться ли приложение вместе с ОС. Извлекаеться из сохранненых настроек.
         /// </summary>
-        public bool IsStartWithOS { get { return Properties.Settings.Default.IsStartWithOS; } }
+        public bool IsStartWithOS { get { return Properties.Settings.Default.IsStartWithOS; } set { } } // immitation setvalue for support wpf-binding
         /// <summary>
         /// Текущая высота экрана в пикселях
         /// </summary>
