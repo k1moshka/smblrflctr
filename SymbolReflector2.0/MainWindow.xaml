@@ -6,12 +6,19 @@
         xmlns:ui="clr-namespace:SymbolReflector.Core.UI"
         xmlns:uiCommands="clr-namespace:SymbolReflector.Core.UI.Commands"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SymbolReflector.MainWindow"
-        Title="Symbol Reflector 2.0" Height="190" Width="300"
-        ResizeMode="NoResize"      
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        x:Class="SymbolReflector.MainWindow"
+        Title="Symbol Reflector 2.0" 
+        Height="190" Width="300"
+        ResizeMode="NoResize"
         DataContext="{Binding Source={x:Static local:Context.Current}}"
         Left="{Binding Path=ScreenWidth, Converter={StaticResource leftConverter}}"
-        Top="{Binding Path=ScreenHeight, Converter={StaticResource topConverter}}" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+        Top="{Binding Path=ScreenHeight, Converter={StaticResource topConverter}}" 
+        AllowsTransparency="True" 
+        WindowStyle="None" 
+        Background="{x:Null}">
 	<Window.Resources>
         <uiCommands:HideWindowCommand x:Key="hideWindowCommand"/>
         <ControlTemplate x:Key="ButtonHideTemplate" TargetType="{x:Type Button}">
@@ -147,7 +154,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Path Data="M-0.91151515,190.50667 L10.438667,0.41118324 299.39377,9.9816319 295.74813,112.98311 z" Margin="-0.912,0.412,-0.388,-1.507" Grid.Row="1" Stretch="Fill" Stroke="Black" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="2">
+        <Path Data="M-0.91151515,190.50667 L10.438667,0.41118324 299.39377,9.9816319 295.74813,112.98311 z" Margin="-0.912,0.412,-0.388,-1.507" Grid.Row="0" Stretch="Fill" Stroke="Black" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="3">
         	<Path.Fill>
         		<LinearGradientBrush EndPoint="0.012,0.982" StartPoint="0.699,0.208">
         			<GradientStop Color="{DynamicResource WindowColorGreen}" Offset="0"/>
@@ -155,8 +162,14 @@
         		</LinearGradientBrush>
         	</Path.Fill>
         </Path>
-        <ui:Binder Margin="5" Grid.Row="1"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <ui:Binder Margin="5" Grid.Row="0"/>
+        <CheckBox Name="check_startup" 
+                  Content="Запускать при старте системы"
+                  Checked="check_startup_Checked" 
+                  Unchecked="check_startup_Unchecked"
+                  IsChecked="{Binding Path=IsStartWithOS, Mode=OneTime}"
+                  Grid.Row="1" Margin="12,5,5,5" Style="{DynamicResource CheckBoxStyle}"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Top" Margin="98.5,0,61.5,0" d:LayoutOverrides="Width">
             <Button Content="OK" Width="60" Margin="5" Command="{Binding AddFilterCommand}" Template="{DynamicResource ButtonControlTemplate}"/>
             <Button Content="Cancel" Width="60" Margin="5" Command="{Binding RemoveFilterCommand}" Template="{DynamicResource ButtonControlTemplate}">
             	<Button.Background>
@@ -178,7 +191,7 @@
         		</TransformGroup>
         	</Label.RenderTransform>
         </Label>
-        <Button Name="Button_hide" Content="Button" HorizontalAlignment="Right" Height="27.5" Margin="0,8,-0.388,0" Grid.Row="1" VerticalAlignment="Top" Width="49.75" Template="{DynamicResource ButtonHideTemplate}"
+        <Button Name="Button_hide" Content="Button" HorizontalAlignment="Right" Height="27.5" Margin="0,8,-0.388,0" VerticalAlignment="Top" Width="49.75" Template="{DynamicResource ButtonHideTemplate}"
                 Command="{StaticResource hideWindowCommand}"/>
     </Grid>
 </Window>
