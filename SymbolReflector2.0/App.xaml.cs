@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using SymbolReflector.Core;
 using System.Windows;
-using System.Threading;
 using SymbolReflector.Core.UI;
+using Microsoft.Win32;
 
 namespace SymbolReflector
 {
@@ -15,11 +11,17 @@ namespace SymbolReflector
     /// </summary>
     public partial class App : Application
     {
-        private StringChanger changer;
+        private StringChanger changer; // управляет процессом обработки строк
         private SRNotifyIcon notifyIcon;
+
+        internal static RegistryKey startUpKey;
+        internal static string pathToApp;
 
         public App()
         {
+            startUpKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            pathToApp = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            
             changer = new StringChanger();
             KeyboardFilterHandler.BindDown += new EventHandler<EventArgs>(KeyboardFilterHandler_BindDown);
             this.Activated += new EventHandler(App_Activated);
@@ -36,7 +38,7 @@ namespace SymbolReflector
         }
 
         [STAThread]
-        void KeyboardFilterHandler_BindDown(object sender, EventArgs e)
+        private void KeyboardFilterHandler_BindDown(object sender, EventArgs e)
         {
             changer.Cut();
             string wrong_str;
