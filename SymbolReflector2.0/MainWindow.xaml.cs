@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace SymbolReflector
 {
@@ -23,5 +11,19 @@ namespace SymbolReflector
         {
             InitializeComponent();
         }
+
+        #region установка сценария запуска прилдения при старте ОС
+        private void check_startup_Checked(object sender, RoutedEventArgs e)
+        {
+            App.startUpKey.SetValue("Symbol Reflector", App.pathToApp);
+            Properties.Settings.Default.IsStartWithOS = true;
+        }
+
+        private void check_startup_Unchecked(object sender, RoutedEventArgs e)
+        {
+            App.startUpKey.DeleteValue("Symbol Reflector");
+            Properties.Settings.Default.IsStartWithOS = false;
+        }
+        #endregion
     }
 }
