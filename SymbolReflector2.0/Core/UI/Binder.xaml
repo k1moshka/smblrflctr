@@ -5,13 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:core="clr-namespace:SymbolReflector.Core"
              xmlns:ui="clr-namespace:SymbolReflector.Core.UI"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+			 xmlns:commands="clr-namespace:SymbolReflector.Core.UI.Commands"
+             mc:Ignorable="d" d:DesignWidth="300" Height="66">
     <UserControl.Resources>
         <core:BindToStrConverter x:Key="BtSconverter"></core:BindToStrConverter>
+		<commands:ResetBindSettingsCommand x:Key="resetBindCommand"></commands:ResetBindSettingsCommand>
     </UserControl.Resources>
-    <StackPanel>
-        <Label Content="Глобальный байнд:" Name="Label_bind"  Margin="5"/>
-        <TextBox Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ui:Binder}}, Path=Bind, Converter={StaticResource BtSconverter}}" Name="Text_bind" Grid.Row="1"  Margin="5" IsReadOnly="True" PreviewKeyDown="Text_bind_PreviewKeyDown" PreviewKeyUp="Text_bind_PreviewKeyUp" Style="{DynamicResource TextBoxTemplate}" BorderBrush="Black" BorderThickness="2" Background="#80006622" />
-    </StackPanel>
+    <Grid Height="66" VerticalAlignment="Top">
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="Auto"/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    		<ColumnDefinition Width="Auto"/>
+    	</Grid.ColumnDefinitions>
+		<Button Content="Reset" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Margin="0,0,4,2" Template="{DynamicResource ButtonControlTemplate}" Height="{Binding ActualHeight, ElementName=Text_bind}" Command="{DynamicResource resetBindCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}"/>
+		<StackPanel Grid.RowSpan="2">
+			<Label Content="Глобальный байнд:" x:Name="Label_bind"  Margin="5"/>
+			<TextBox Text="{Binding Bind, Converter={StaticResource BtSconverter}, RelativeSource={RelativeSource AncestorType={x:Type ui:Binder}, Mode=FindAncestor}}" x:Name="Text_bind" Grid.Row="1"  Margin="5" IsReadOnly="True" PreviewKeyDown="Text_bind_PreviewKeyDown" PreviewKeyUp="Text_bind_PreviewKeyUp" Style="{DynamicResource TextBoxTemplate}" BorderBrush="Black" BorderThickness="2" Background="#80006622" />
+		</StackPanel>
+	</Grid>
 </UserControl>

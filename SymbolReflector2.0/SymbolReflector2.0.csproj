@@ -91,6 +91,7 @@
       <DependentUpon>Binder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\UI\Commands\HideWindowCommand.cs" />
+    <Compile Include="Core\UI\Commands\ResetBindSettingsCommand.cs" />
     <Compile Include="Core\UI\LeftAndTopConverters.cs" />
     <Compile Include="Core\UI\SRNotifyIcon.cs" />
     <Compile Include="MainWindow.xaml.cs">

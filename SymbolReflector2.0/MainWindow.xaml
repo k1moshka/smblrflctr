@@ -141,7 +141,7 @@
 					</VisualStateGroup>
 				</VisualStateManager.VisualStateGroups>
 				<Rectangle x:Name="rectangle" RadiusY="0" RadiusX="0" Stroke="Black" Fill="#FF008102"/>
-				<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" OpacityMask="Black"/>
+				<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" OpacityMask="Black" Margin="5,0"/>
 			</Grid>
 		</ControlTemplate>
 	</Window.Resources>
@@ -170,8 +170,8 @@
                   IsChecked="{Binding Path=IsStartWithOS, Mode=OneTime}"
                   Grid.Row="1" Margin="12,5,5,5" Style="{DynamicResource CheckBoxStyle}"/>
         <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Top" Margin="98.5,0,61.5,0" d:LayoutOverrides="Width">
-            <Button Content="OK" Width="60" Margin="5" Command="{Binding AddFilterCommand}" Template="{DynamicResource ButtonControlTemplate}"/>
-            <Button Content="Cancel" Width="60" Margin="5" Command="{Binding RemoveFilterCommand}" Template="{DynamicResource ButtonControlTemplate}">
+            <Button Content="On" Width="60" Margin="5" Command="{Binding AddFilterCommand}" Template="{DynamicResource ButtonControlTemplate}"/>
+            <Button Content="Off" Width="60" Margin="5" Command="{Binding RemoveFilterCommand}" Template="{DynamicResource ButtonControlTemplate}">
             	<Button.Background>
             		<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
             			<GradientStop Color="#FFF3F3F3" Offset="0"/>

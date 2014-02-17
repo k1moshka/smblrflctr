@@ -57,20 +57,29 @@ namespace SymbolReflector.Core.UI
         private void Text_bind_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             var key = (int)e.Key;
-            if (this._keys.Contains(key))
+            if (this._keys.Contains(key) && this.key1down && this.key2down)
             {
                 this._keys.Remove(key);
 
                 if (this._keys.Count.Equals(0))
                 {
-                    this.key1down = this.key2down = false;
+                    resetKeydownHandlers();
                     Settings.Default.BindKey2 = KeyInterop.VirtualKeyFromKey(e.Key);
                     updateBind();
                 }
                 else
                     Settings.Default.BindKey1 = KeyInterop.VirtualKeyFromKey(e.Key);
             }
+            else
+                resetKeydownHandlers();
             e.Handled = true;
+        }
+
+        private void resetKeydownHandlers()
+        {
+            // устанавливает как ненажатыми клавиши
+            this.key1down = this.key2down = false;
+            _keys.Clear();
         }
         #endregion
 
@@ -82,6 +91,14 @@ namespace SymbolReflector.Core.UI
                 Bind1 = KeyInterop.KeyFromVirtualKey(Settings.Default.BindKey1),
                 Bind2 = KeyInterop.KeyFromVirtualKey(Settings.Default.BindKey2)
             };
+        }
+
+        internal void ResetBind()
+        {
+            // установка дефолтных настроек байнда для приложения и апдейт текстбокса
+            Settings.Default.BindKey1 = 0;
+            Settings.Default.BindKey2 = 0;
+            updateBind();
         }
     }
 }
